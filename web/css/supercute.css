@@ -1,0 +1,124 @@
+textarea{
+    resize:none;
+    padding: 0px;
+    border: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.w {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.head {
+    height: 100px;
+}
+
+.logo {
+    font-size: 28px;
+    color: #009a61;
+    position: absolute;
+    left: 0;
+    top: 26px;
+    padding-left: 38px;
+}
+
+.item-outer {
+    width: 285px;
+    height: 145px;
+    border: 1px solid #CCC;
+    margin: 0 13px 13px 0;
+    position: static;
+    border-radius: 5px;
+    float: left;
+}
+
+.item {
+    height: 100%;
+    padding: 10px 15px 10px 8px;
+    position: relative;
+}
+
+.item-head {
+    position: relative;
+    display: block;
+}
+
+.item-body {
+    margin-top: 28px;
+    position: relative;
+}
+
+.item-icon {
+    float: left;
+    margin-right: 10px;
+}
+
+.item-desc {
+    border-top: 1px solid #DDD;
+    margin-top: 8px;
+    padding: 10px 0;
+}
+
+/* json */
+
+.editor-left {
+    margin-right: 50px;
+    float: left;
+}
+
+.editor-btns {
+    width: 100px;
+    margin-right: 50px;
+    margin-top: 50px;
+    float: left;
+}
+
+.editor-btn {
+    margin-top: 120px;
+    width: 100%;
+    float: left;
+}
+
+.editor-btn-next {
+    width: 100%;
+    float: left;
+    margin-top: 50px;
+}
+
+.editor-right {
+    float: left;
+}
+
+.jsonresult {
+    width: 498px;
+    height: 498px;
+    border: 1px solid blue;
+}
+
+.jsonresult-title {
+    height: 7%;
+    width: 100%;
+    background-color: blue;
+    float: left;
+}
+
+.jsonresult-title-content {
+    font-size: 13px;
+    color: white;
+    font-family: "dejavu sans mono", "droid sans mono", consolas, monaco, "lucida console", "courier new", courier, monospace, sans-serif;
+    position: relative;
+    margin: 10px;
+    float: left;
+}
+
+.jsonresult-textarea {
+    height: 93%;
+    width: 100%;
+    font-size: 13px;
+    font-family: "dejavu sans mono", "droid sans mono", consolas, monaco, "lucida console", "courier new", courier, monospace, sans-serif;
+}

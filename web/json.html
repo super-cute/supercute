@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="js/ace.js"></script>
+
+    <link rel="stylesheet" href="css/supercute.css">
+    <!-- load the minimalist version of JSONEditor, which doesn't have Ace embedded -->
+    <link href="css/jsoneditor.css" rel="stylesheet" type="text/css">
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jsoneditor-minimalist.min.js"></script>
+
+    <style type="text/css">
+        #jsoneditor {
+            width: 500px;
+            height: 500px;
+        }
+
+        body, html {
+            font-family: "DejaVu Sans", sans-serif;
+        }
+
+        p, li {
+            width: 500px;
+            font-size: 10.5pt;
+        }
+
+        code {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+<div class="w head">
+    <a class="logo" href="index.html">超级可爱</a>
+</div>
+
+<div class="w">
+    <div class="editor-left">
+        <div id="jsoneditor"></div>
+    </div>
+    <div class="editor-btns">
+        <button id="transfer" class="editor-btn">转义 >>></button>
+        <button id="unescape" class="editor-btn-next"><<< 反转义</button>
+    </div>
+    <div class="editor-right">
+        <div class="jsonresult">
+            <div class="jsonresult-title">
+                <a class="jsonresult-title-content">result</a>
+            </div>
+            <textarea id="result-textarea" class="jsonresult-textarea"></textarea>
+        </div>
+    </div>
+</div>
+
+<script>
+    // create the editor
+    var container = document.getElementById('jsoneditor');
+    var options = {
+        mode: 'code',
+        ace: ace
+    };
+    var json = {
+        'array': [1, 2, 3],
+        'boolean': true,
+        'null': null,
+        'number': 123,
+        'object': {'a': 'b', 'c': 'd'},
+        'string': 'Hello World'
+    };
+    var editor = new JSONEditor(container, options, json);
+
+    var $resultTextarea = $("#result-textarea");
+
+    var transBtn = document.getElementById("transfer");
+    transBtn.onclick = function () {
+        var tmp = editor.get();
+        $.ajax({
+            type: "post",
+            url: 'http://localhost:9527/api/v0/json/escape',
+            data:JSON.stringify(tmp, null, 2),
+            dataType: 'json',
+            success: function (data) {
+                $resultTextarea.val(data["data"]);
+            }
+        });
+    };
+
+    var unescapeBtn = document.getElementById("unescape");
+    unescapeBtn.onclick = function () {
+        $.ajax({
+            type: "post",
+            url: 'http://localhost:9527/api/v0/json/unescape',
+            data: $resultTextarea.val(),
+            dataType: 'json',
+            success: function (data) {
+                editor.set(data["data"]);
+            }
+        });
+    };
+</script>
+
+</body>
+</html>
